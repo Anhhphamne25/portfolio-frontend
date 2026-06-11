@@ -1,0 +1,109 @@
+import Link from "next/link"
+
+const systems = [
+  {
+    id: "code-grader",
+    title: "Code Grader",
+    description: "Submit code solutions and receive AI-generated feedback with scores and improvement tips.",
+    stack: ["Python", "OpenAI", "AST Analysis"],
+    badge: "Most Impressive",
+    badgeColor: "bg-primary text-primary-foreground",
+    featured: true,
+  },
+  {
+    id: "doc-qa",
+    title: "Document Q&A",
+    description: "Upload a PDF and ask questions. RAG pipeline retrieves precise answers with source references.",
+    stack: ["RAG", "Qdrant", "LangChain"],
+    badge: "Most Advanced",
+    badgeColor: "bg-accent text-foreground",
+    featured: true,
+  },
+  {
+    id: "problem-gen",
+    title: "AI Problem Generator",
+    description: "Generate custom coding problems by difficulty, language, and topic in seconds.",
+    stack: ["GPT-4", "FastAPI", "React"],
+    badge: null,
+    badgeColor: "",
+    featured: false,
+  },
+  {
+    id: "music",
+    title: "Music Genre Detection",
+    description: "Upload an audio file and get instant genre classification with confidence scores.",
+    stack: ["PyTorch", "LibROSA", "FastAPI"],
+    badge: null,
+    badgeColor: "",
+    featured: false,
+  },
+]
+
+export function SystemsPreview() {
+  return (
+    <section id="systems" className="py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+          <div>
+            <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">AI Systems</p>
+            <h2 className="text-3xl font-bold text-foreground">Featured Systems</h2>
+            <p className="text-muted-foreground mt-2">Interactive AI tools you can try right now</p>
+          </div>
+          <Link
+            href="/lab"
+            className="px-5 py-2.5 rounded-2xl bg-secondary border border-border text-foreground text-sm font-medium hover:bg-accent/40 transition-all hover:scale-105 whitespace-nowrap w-fit"
+          >
+            View All Systems
+          </Link>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-5">
+          {systems.map((system) => (
+            <div
+              key={system.id}
+              className={`group relative flex flex-col gap-4 p-6 rounded-2xl border transition-all hover:scale-[1.02] hover:shadow-lg cursor-pointer ${
+                system.featured
+                  ? "bg-card border-accent/60 shadow-sm"
+                  : "bg-card border-border"
+              }`}
+            >
+              {/* Badge */}
+              {system.badge && (
+                <span className={`absolute top-4 right-4 text-xs font-semibold px-2.5 py-1 rounded-full ${system.badgeColor}`}>
+                  {system.badge}
+                </span>
+              )}
+
+              <div className="flex flex-col gap-2">
+                <h3 className="text-lg font-bold text-foreground">{system.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{system.description}</p>
+              </div>
+
+              {/* Stack tags */}
+              <div className="flex flex-wrap gap-1.5">
+                {system.stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2.5 py-1 rounded-lg bg-secondary text-xs font-medium text-muted-foreground"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <Link
+                href="/lab"
+                className="mt-auto inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-secondary border border-border text-sm font-medium text-foreground hover:bg-accent/40 transition-colors w-fit group-hover:border-accent"
+              >
+                Try it
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
