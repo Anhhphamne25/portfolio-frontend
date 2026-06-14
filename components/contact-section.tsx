@@ -1,11 +1,21 @@
 const contactLinks = [
   {
     label: "Email",
-    value: "alex@example.com",
-    href: "mailto:alex@example.com",
+    value: "AhhPam.Work@gmail.com",
+    href: "mailto:AhPam.Work@gmail.com",
     icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+        />
       </svg>
     ),
   },
@@ -29,7 +39,7 @@ const contactLinks = [
       </svg>
     ),
   },
-]
+];
 
 export function ContactSection() {
   return (
@@ -38,13 +48,16 @@ export function ContactSection() {
         <div className="rounded-3xl bg-card border border-border p-10 md:p-16 flex flex-col md:flex-row gap-12 items-center">
           {/* Left */}
           <div className="flex-1 flex flex-col gap-4">
-            <p className="text-xs font-semibold text-primary uppercase tracking-widest">Contact</p>
+            <p className="text-xs font-semibold text-primary uppercase tracking-widest">
+              Contact
+            </p>
             <h2 className="text-3xl font-bold text-foreground text-balance">
               Let&apos;s build something together
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              I&apos;m open to new opportunities, collaborations, and interesting projects. Feel free to reach out
-              through any of the channels below.
+              I&apos;m open to new opportunities, collaborations, and
+              interesting projects. Feel free to reach out through any of the
+              channels below.
             </p>
           </div>
 
@@ -63,10 +76,22 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground">{link.label}</p>
-                  <p className="text-sm font-medium text-foreground">{link.value}</p>
+                  <p className="text-sm font-medium text-foreground">
+                    {link.value}
+                  </p>
                 </div>
-                <svg className="w-4 h-4 text-muted-foreground ml-auto group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <svg
+                  className="w-4 h-4 text-muted-foreground ml-auto group-hover:text-primary transition-colors"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
                 </svg>
               </a>
             ))}
@@ -74,5 +99,5 @@ export function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
