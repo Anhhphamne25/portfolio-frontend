@@ -1,63 +1,80 @@
-"use client"
+"use client";
 
-import { useChat } from "@ai-sdk/react"
-import { DefaultChatTransport } from "ai"
-import { useState, useRef, useEffect } from "react"
+import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
+import { useState, useRef, useEffect } from "react";
 
 const suggestedQuestions = [
   "What are your strongest technical skills?",
   "Tell me about your RAG system",
   "What projects are you most proud of?",
   "Are you open to new opportunities?",
-]
+];
 
 function getMessageText(parts: { type: string; text?: string }[]): string {
-  if (!parts || !Array.isArray(parts)) return ""
+  if (!parts || !Array.isArray(parts)) return "";
   return parts
     .filter((p): p is { type: "text"; text: string } => p.type === "text")
     .map((p) => p.text)
-    .join("")
+    .join("");
 }
 
 export function AiChatSection() {
-  const [inputValue, setInputValue] = useState("")
-  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const [inputValue, setInputValue] = useState("");
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatWindowRef = useRef<HTMLDivElement>(null);
 
   const { messages, sendMessage, status } = useChat({
     transport: new DefaultChatTransport({ api: "/api/chat" }),
-  })
+  });
 
-  const isLoading = status === "streaming" || status === "submitted"
+  const isLoading = status === "streaming" || status === "submitted";
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }, [messages])
+    if (messages.length === 0) return;
+
+    const chatWindow = chatWindowRef.current;
+    if (!chatWindow) return;
+
+    chatWindow.scrollTo({
+      top: chatWindow.scrollHeight,
+      behavior: "smooth",
+    });
+  }, [messages.length]);
 
   const handleSend = () => {
-    if (!inputValue.trim() || isLoading) return
-    sendMessage({ text: inputValue.trim() })
-    setInputValue("")
-  }
+    if (!inputValue.trim() || isLoading) return;
+    sendMessage({ text: inputValue.trim() });
+    setInputValue("");
+  };
 
   const handleSuggestion = (q: string) => {
-    if (isLoading) return
-    sendMessage({ text: q })
-  }
+    if (isLoading) return;
+    sendMessage({ text: q });
+  };
 
   return (
     <section id="chat" className="py-24 px-6 bg-secondary/30">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
-          <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">AI Assistant</p>
-          <h2 className="text-3xl font-bold text-foreground mb-3">Chat with my AI</h2>
+          <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">
+            AI Assistant
+          </p>
+          <h2 className="text-3xl font-bold text-foreground mb-3">
+            Chat with my AI
+          </h2>
           <p className="text-muted-foreground">
-            Ask me anything about my background, projects, or skills — I&apos;ll answer in Alex&apos;s voice.
+            Ask me anything about my background, projects, or skills — I&apos;ll
+            answer in Alex&apos;s voice.
           </p>
         </div>
 
         <div className="rounded-3xl bg-card border border-border shadow-sm overflow-hidden">
           {/* Chat window */}
-          <div className="h-96 overflow-y-auto p-6 flex flex-col gap-4">
+          <div
+            ref={chatWindowRef}
+            className="h-96 overflow-y-auto p-6 flex flex-col gap-4"
+          >
             {/* Welcome message */}
             {messages.length === 0 && (
               <div className="flex gap-3 items-start">
@@ -66,15 +83,18 @@ export function AiChatSection() {
                 </div>
                 <div className="bg-secondary rounded-2xl rounded-tl-sm px-4 py-3 max-w-xs md:max-w-md">
                   <p className="text-sm text-foreground">
-                    Hey! I&apos;m Alex&apos;s AI assistant. Ask me about his projects, skills, or experience — I&apos;m happy to help!
+                    Hey! I&apos;m Alex&apos;s AI assistant. Ask me about his
+                    projects, skills, or experience — I&apos;m happy to help!
                   </p>
                 </div>
               </div>
             )}
 
             {messages.map((message) => {
-              const text = getMessageText(message.parts as { type: string; text?: string }[])
-              const isUser = message.role === "user"
+              const text = getMessageText(
+                message.parts as { type: string; text?: string }[],
+              );
+              const isUser = message.role === "user";
               return (
                 <div
                   key={message.id}
@@ -99,7 +119,7 @@ export function AiChatSection() {
                     {text}
                   </div>
                 </div>
-              )
+              );
             })}
 
             {isLoading && (
@@ -155,5 +175,5 @@ export function AiChatSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

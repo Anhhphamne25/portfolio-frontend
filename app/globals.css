@@ -1,43 +1,43 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
   /* Soft pastel blue palette - cozy, clean, minimal */
-  --background: #F4F5F6;
-  --foreground: #2E2E2E;
-  --card: #FFFFFF;
-  --card-foreground: #2E2E2E;
-  --popover: #FFFFFF;
-  --popover-foreground: #2E2E2E;
-  --primary: #AFC3E0;
+  --background: #edf0f5;
+  --foreground: #2e2e2e;
+  --card: #ffffff;
+  --card-foreground: #2e2e2e;
+  --popover: #ffffff;
+  --popover-foreground: #2e2e2e;
+  --primary: #afc3e0;
   --primary-foreground: #ffffff;
-  --secondary: #E9EEF6;
-  --secondary-foreground: #2E2E2E;
-  --muted: #E9EEF6;
-  --muted-foreground: #8A8F98;
-  --accent: #DDE5F2;
-  --accent-foreground: #2E2E2E;
+  --secondary: #e9eef6;
+  --secondary-foreground: #2e2e2e;
+  --muted: #e9eef6;
+  --muted-foreground: #8a8f98;
+  --accent: #dde5f2;
+  --accent-foreground: #2e2e2e;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: #ffffff;
-  --border: #E6E8EC;
-  --input: #E6E8EC;
-  --ring: #AFC3E0;
-  --chart-1: #AFC3E0;
-  --chart-2: #DDE5F2;
-  --chart-3: #8A8F98;
-  --chart-4: #2E2E2E;
-  --chart-5: #E9EEF6;
+  --border: #e6e8ec;
+  --input: #e6e8ec;
+  --ring: #afc3e0;
+  --chart-1: #afc3e0;
+  --chart-2: #dde5f2;
+  --chart-3: #8a8f98;
+  --chart-4: #2e2e2e;
+  --chart-5: #e9eef6;
   --radius: 1rem;
-  --sidebar: #F4F5F6;
-  --sidebar-foreground: #2E2E2E;
-  --sidebar-primary: #AFC3E0;
+  --sidebar: #f4f5f6;
+  --sidebar-foreground: #2e2e2e;
+  --sidebar-primary: #afc3e0;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #E9EEF6;
-  --sidebar-accent-foreground: #2E2E2E;
-  --sidebar-border: #E6E8EC;
-  --sidebar-ring: #AFC3E0;
+  --sidebar-accent: #e9eef6;
+  --sidebar-accent-foreground: #2e2e2e;
+  --sidebar-border: #e6e8ec;
+  --sidebar-ring: #afc3e0;
 }
 
 .dark {
@@ -76,8 +76,8 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
-  --font-mono: 'ui-monospace', 'SFMono-Regular', monospace;
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-mono: "ui-monospace", "SFMono-Regular", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -115,15 +115,15 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   /* Custom semantic color names */
-  --color-bg: #F4F5F6;
-  --color-bg-card: #FFFFFF;
-  --color-primary-custom: #AFC3E0;
-  --color-primary-soft: #E9EEF6;
-  --color-accent-custom: #DDE5F2;
-  --color-heading: #6F8FB8;
-  --color-body: #8A8F98;
-  --color-muted-custom: #B0B6BE;
-  --color-border-custom: #E6E8EC;
+  --color-bg: #edf0f5;
+  --color-bg-card: #ffffff;
+  --color-primary-custom: #afc3e0;
+  --color-primary-soft: #e9eef6;
+  --color-accent-custom: #dde5f2;
+  --color-heading: #6f8fb8;
+  --color-body: #8a8f98;
+  --color-muted-custom: #b0b6be;
+  --color-border-custom: #e6e8ec;
 }
 
 @layer base {
@@ -134,3 +134,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Ensure anchor navigation accounts for the fixed header */
+html {
+  scroll-padding-top: 4rem;
+}
+
+/* thẻ nền trắng #F5F7FA*/
+/* chữ đậm 081e5a */
+/* chũ đậm nhạt 3E5A9A */
+/* chữ nhạt 7D93C0 */
