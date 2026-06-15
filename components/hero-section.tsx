@@ -1,26 +1,31 @@
-import Link from "next/link"
+import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center justify-center pt-20 px-6">
+    <section className="min-h-screen flex items-center justify-center px-6">
       <div className="max-w-5xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
         {/* Left content */}
         <div className="flex flex-col gap-6">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary border border-border w-fit">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-xs font-medium text-muted-foreground">Available for opportunities</span>
+            <span className="text-xs font-medium text-muted-foreground">
+              Available for opportunities
+            </span>
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 ">
             <h1 className="text-5xl md:text-6xl font-bold text-foreground text-balance leading-tight">
-              Alex Chen
+              Phạm Tuấn Anh
             </h1>
-            <p className="text-xl font-medium text-primary">AI Engineer / Backend Developer</p>
+            <p className="text-xl font-medium text-primary">
+              AI Engineer / Backend Developer
+            </p>
           </div>
 
           <p className="text-muted-foreground text-lg leading-relaxed text-pretty">
-            I build intelligent systems that solve real-world problems — from RAG pipelines and code graders to music
-            classifiers and document understanding engines.
+            I build intelligent systems that solve real-world problems — from
+            RAG pipelines and code graders to music classifiers and document
+            understanding engines.
           </p>
 
           <div className="flex flex-wrap gap-3 pt-2">
@@ -60,9 +65,16 @@ export function HeroSection() {
                   { label: "Projects", value: "12+" },
                   { label: "Stack", value: "10+" },
                 ].map((stat) => (
-                  <div key={stat.label} className="flex-1 text-center p-2 rounded-xl bg-secondary">
-                    <p className="font-bold text-foreground text-sm">{stat.value}</p>
-                    <p className="text-xs text-muted-foreground">{stat.label}</p>
+                  <div
+                    key={stat.label}
+                    className="flex-1 text-center p-2 rounded-xl bg-secondary"
+                  >
+                    <p className="font-bold text-foreground text-sm">
+                      {stat.value}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {stat.label}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -71,5 +83,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { cn } from "@/lib/utils"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export function Navbar() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/lab", label: "Systems" },
     { href: "/#contact", label: "Contact" },
-  ]
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 backdrop-blur-md bg-background/80 border-b border-border">
@@ -31,7 +31,7 @@ export function Navbar() {
               "px-4 py-2 rounded-xl text-sm font-medium transition-all hover:bg-secondary hover:text-foreground",
               pathname === link.href
                 ? "bg-secondary text-foreground"
-                : "text-muted-foreground"
+                : "text-muted-foreground",
             )}
           >
             {link.label}
@@ -46,5 +46,5 @@ export function Navbar() {
         Try Systems
       </Link>
     </header>
-  )
+  );
 }
