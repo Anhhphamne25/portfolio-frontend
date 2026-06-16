@@ -2,20 +2,19 @@
 
 import { useState } from "react";
 import { Navbar } from "@/components/navbar";
-import { CodeGrader } from "@/components/lab/code-grader";
+import { CodeGrader } from "@/components/lab/scoring-code";
 import { DocumentQA } from "@/components/lab/document-qa";
 import { ProblemGenerator } from "@/components/lab/problem-generator";
-import { MusicDetection } from "@/components/lab/music-detection";
 
 const SYSTEMS = [
   {
-    id: "code-grader",
-    title: "Code Grader",
+    id: "AI-Score",
+    title: "AI Code Scoring",
     description:
-      "Submit code for AI-powered grading with scores and detailed feedback",
-    stack: ["Python", "OpenAI", "AST Analysis"],
+      "Submit code solutions and receive AI-generated feedback with scores and improvement tips.",
+    stack: ["Python", "Qwen", "AST Analysis", "FastAPI"],
     badge: "Most Impressive",
-    badgeColor: "bg-primary text-primary-foreground",
+    badgeColor: "bg-[#6e95d0] text-[#ffffff]",
     icon: (
       <svg
         className="w-5 h-5"
@@ -36,9 +35,9 @@ const SYSTEMS = [
     id: "doc-qa",
     title: "Document Q&A",
     description: "Upload a PDF and ask questions — powered by a RAG pipeline",
-    stack: ["RAG", "Qdrant", "LangChain"],
+    stack: ["RAG", "Embedding", "FastAPI"],
     badge: "Most Advanced",
-    badgeColor: "bg-accent text-foreground",
+    badgeColor: "bg-[#F5F7FA] text-[#081e5a]",
     icon: (
       <svg
         className="w-5 h-5"
@@ -60,7 +59,7 @@ const SYSTEMS = [
     title: "Problem Generator",
     description:
       "Generate custom coding problems by difficulty, language, and topic",
-    stack: ["GPT-4", "FastAPI", "React"],
+    stack: ["Qwen", "FastAPI", "React"],
     badge: null,
     badgeColor: "",
     icon: (
@@ -79,48 +78,23 @@ const SYSTEMS = [
       </svg>
     ),
   },
-  {
-    id: "music",
-    title: "Music Detection",
-    description: "Classify audio files by genre using a trained ML model",
-    stack: ["PyTorch", "LibROSA", "FastAPI"],
-    badge: null,
-    badgeColor: "",
-    icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={1.5}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z"
-        />
-      </svg>
-    ),
-  },
 ];
 
 function SystemContent({ id }: { id: string }) {
   switch (id) {
-    case "code-grader":
+    case "AI-Score":
       return <CodeGrader />;
     case "doc-qa":
       return <DocumentQA />;
     case "problem-gen":
       return <ProblemGenerator />;
-    case "music":
-      return <MusicDetection />;
     default:
       return null;
   }
 }
 
 export default function LabPage() {
-  const [activeSystem, setActiveSystem] = useState("code-grader");
+  const [activeSystem, setActiveSystem] = useState("AI-Score");
 
   const activeData = SYSTEMS.find((s) => s.id === activeSystem)!;
 
@@ -131,13 +105,13 @@ export default function LabPage() {
       {/* Page header */}
       <div className="pt-28 pb-10 px-6 border-b border-border">
         <div className="max-w-6xl mx-auto">
-          <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">
+          <p className="text-xs font-bold text-[#6e95d0] uppercase tracking-widest mb-2">
             Interactive Playground
           </p>
-          <h1 className="text-4xl font-bold text-foreground mb-2">
+          <h1 className="text-4xl font-bold text-[#081e5a] mb-2">
             AI Systems Lab
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-[#7D93C0]">
             Explore and interact with my AI systems — built with real ML models
             and backend pipelines.
           </p>
@@ -154,19 +128,19 @@ export default function LabPage() {
                 onClick={() => setActiveSystem(system.id)}
                 className={`group flex items-start gap-3 p-4 rounded-2xl border text-left transition-all ${
                   activeSystem === system.id
-                    ? "bg-card border-primary/40 shadow-sm"
-                    : "bg-card border-border hover:border-accent hover:scale-[1.01]"
+                    ? "bg-[#fff] border-primary/40 shadow-sm"
+                    : "bg-[#fff] border-border hover:border-accent hover:scale-[1.01]"
                 }`}
               >
                 <div
-                  className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors ${activeSystem === system.id ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground group-hover:bg-accent/40 group-hover:text-foreground"}`}
+                  className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors ${activeSystem === system.id ? "bg-[#6e95d0] text-[#ffffff]" : "bg-secondary text-muted-foreground group-hover:bg-accent/40 group-hover:text-foreground"}`}
                 >
                   {system.icon}
                 </div>
                 <div className="flex flex-col gap-0.5 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span
-                      className={`text-sm font-semibold ${activeSystem === system.id ? "text-foreground" : "text-foreground"}`}
+                      className={`text-sm font-semibold ${activeSystem === system.id ? "text-[#081e5a]" : "text-[#7D93C0] group-hover:text-[#081e5a]"}`}
                     >
                       {system.title}
                     </span>
@@ -178,7 +152,7 @@ export default function LabPage() {
                       </span>
                     )}
                   </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
+                  <p className="text-xs text-[#7D93C0] leading-relaxed">
                     {system.description}
                   </p>
                 </div>
@@ -191,7 +165,7 @@ export default function LabPage() {
             {/* Panel header */}
             <div className="flex flex-col gap-1 pb-6 mb-6 border-b border-border">
               <div className="flex items-center gap-3 flex-wrap">
-                <h2 className="text-2xl font-bold text-foreground">
+                <h2 className="text-2xl font-bold text-[#081e5a]">
                   {activeData.title}
                 </h2>
                 {activeData.badge && (
@@ -202,14 +176,14 @@ export default function LabPage() {
                   </span>
                 )}
               </div>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-[#7D93C0] leading-relaxed">
                 {activeData.description}
               </p>
               <div className="flex flex-wrap gap-1.5 mt-2">
                 {activeData.stack.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2.5 py-1 rounded-lg bg-secondary text-xs font-medium text-muted-foreground"
+                    className="px-2.5 py-1 rounded-lg bg-[#F5F7FA] text-xs font-medium text-[#081e5a]"
                   >
                     {tech}
                   </span>
@@ -225,10 +199,10 @@ export default function LabPage() {
 
       <footer className="border-t border-border py-8 px-6 mt-10">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-[#7D93C0]">
             &copy; {new Date().getFullYear()} Phạm Tuấn Anh. AI Systems Lab.
           </p>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-[#7D93C0]">
             Powered by Gemini, FastAPI, and LangChain
           </p>
         </div>

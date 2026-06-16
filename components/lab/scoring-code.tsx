@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
 const SAMPLE_PROBLEM = {
   title: "Two Sum",
@@ -11,74 +11,84 @@ const SAMPLE_PROBLEM = {
     { input: "nums = [2,7,11,15], target = 9", output: "[0,1]" },
     { input: "nums = [3,2,4], target = 6", output: "[1,2]" },
   ],
-  constraints: ["2 <= nums.length <= 10^4", "-10^9 <= nums[i] <= 10^9", "Only one valid answer exists."],
-}
+  constraints: [
+    "2 <= nums.length <= 10^4",
+    "-10^9 <= nums[i] <= 10^9",
+    "Only one valid answer exists.",
+  ],
+};
 
 const STARTER_CODE = `def two_sum(nums: list[int], target: int) -> list[int]:
     # Write your solution here
     pass
-`
+`;
 
 type GraderResult = {
-  score: number
-  verdict: string
-  feedback: string
-  testResults: { input: string; expected: string; passed: boolean }[]
-}
+  score: number;
+  verdict: string;
+  feedback: string;
+  testResults: { input: string; expected: string; passed: boolean }[];
+};
 
 export function CodeGrader() {
-  const [code, setCode] = useState(STARTER_CODE)
-  const [result, setResult] = useState<GraderResult | null>(null)
-  const [loading, setLoading] = useState(false)
+  const [code, setCode] = useState(STARTER_CODE);
+  const [result, setResult] = useState<GraderResult | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
-    if (!code.trim() || loading) return
-    setLoading(true)
-    setResult(null)
+    if (!code.trim() || loading) return;
+    setLoading(true);
+    setResult(null);
     try {
       const res = await fetch("/api/grade", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code, problem: SAMPLE_PROBLEM.title }),
-      })
-      const data = await res.json()
-      setResult(data)
+      });
+      const data = await res.json();
+      setResult(data);
     } catch {
       setResult({
         score: 0,
         verdict: "Error",
         feedback: "Failed to connect to grader. Please try again.",
         testResults: [],
-      })
+      });
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
-  const scoreColor =
-    result
-      ? result.score >= 80
-        ? "text-primary"
-        : result.score >= 50
-          ? "text-yellow-600"
-          : "text-red-500"
-      : ""
+  const scoreColor = result
+    ? result.score >= 80
+      ? "text-primary"
+      : result.score >= 50
+        ? "text-yellow-600"
+        : "text-red-500"
+    : "";
 
   return (
     <div className="flex flex-col gap-6">
       {/* Problem statement */}
       <div className="rounded-2xl bg-secondary border border-border p-5 flex flex-col gap-4">
         <div className="flex items-center gap-3">
-          <h3 className="font-bold text-foreground text-lg">{SAMPLE_PROBLEM.title}</h3>
+          <h3 className="font-bold text-foreground text-lg">
+            {SAMPLE_PROBLEM.title}
+          </h3>
           <span className="px-2.5 py-1 rounded-full bg-primary/15 text-primary text-xs font-semibold">
             {SAMPLE_PROBLEM.difficulty}
           </span>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">{SAMPLE_PROBLEM.description}</p>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          {SAMPLE_PROBLEM.description}
+        </p>
 
         <div className="flex flex-col gap-2">
           {SAMPLE_PROBLEM.examples.map((ex, i) => (
-            <div key={i} className="rounded-xl bg-card border border-border p-3 text-xs font-mono">
+            <div
+              key={i}
+              className="rounded-xl bg-card border border-border p-3 text-xs font-mono"
+            >
               <span className="text-muted-foreground">Input: </span>
               <span className="text-foreground">{ex.input}</span>
               <br />
@@ -89,7 +99,9 @@ export function CodeGrader() {
         </div>
 
         <div className="flex flex-col gap-1">
-          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Constraints</p>
+          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+            Constraints
+          </p>
           {SAMPLE_PROBLEM.constraints.map((c, i) => (
             <p key={i} className="text-xs text-muted-foreground font-mono">
               • {c}
@@ -101,7 +113,9 @@ export function CodeGrader() {
       {/* Code editor */}
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Code Editor (Python)</p>
+          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+            Code Editor (Python)
+          </p>
           <button
             onClick={() => setCode(STARTER_CODE)}
             className="text-xs text-muted-foreground hover:text-foreground transition-colors"
@@ -117,7 +131,9 @@ export function CodeGrader() {
               <div className="w-3 h-3 rounded-full bg-yellow-400/60" />
               <div className="w-3 h-3 rounded-full bg-primary/60" />
             </div>
-            <span className="text-xs text-muted-foreground ml-2">solution.py</span>
+            <span className="text-xs text-muted-foreground ml-2">
+              solution.py
+            </span>
           </div>
           <textarea
             value={code}
@@ -136,9 +152,24 @@ export function CodeGrader() {
       >
         {loading ? (
           <span className="flex items-center justify-center gap-2">
-            <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            <svg
+              className="animate-spin w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              />
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+              />
             </svg>
             Grading your solution...
           </span>
@@ -151,24 +182,37 @@ export function CodeGrader() {
       {result && (
         <div className="flex flex-col gap-4 rounded-2xl bg-card border border-border p-5 animate-in fade-in slide-in-from-bottom-2 duration-300">
           <div className="flex items-center gap-4">
-            <div className={`text-4xl font-bold ${scoreColor}`}>{result.score}/100</div>
+            <div className={`text-4xl font-bold ${scoreColor}`}>
+              {result.score}/100
+            </div>
             <div>
               <p className="font-semibold text-foreground">{result.verdict}</p>
-              <p className="text-xs text-muted-foreground">AI-graded feedback</p>
+              <p className="text-xs text-muted-foreground">
+                AI-graded feedback
+              </p>
             </div>
           </div>
 
           {/* Test results */}
           {result.testResults.length > 0 && (
             <div className="flex flex-col gap-2">
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Test Cases</p>
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                Test Cases
+              </p>
               {result.testResults.map((t, i) => (
-                <div key={i} className="flex items-center gap-3 text-xs p-2.5 rounded-xl bg-secondary">
+                <div
+                  key={i}
+                  className="flex items-center gap-3 text-xs p-2.5 rounded-xl bg-secondary"
+                >
                   <span className={t.passed ? "text-primary" : "text-red-500"}>
                     {t.passed ? "PASS" : "FAIL"}
                   </span>
-                  <span className="text-muted-foreground font-mono">{t.input}</span>
-                  <span className="text-muted-foreground ml-auto">Expected: {t.expected}</span>
+                  <span className="text-muted-foreground font-mono">
+                    {t.input}
+                  </span>
+                  <span className="text-muted-foreground ml-auto">
+                    Expected: {t.expected}
+                  </span>
                 </div>
               ))}
             </div>
@@ -176,11 +220,15 @@ export function CodeGrader() {
 
           {/* Feedback */}
           <div className="flex flex-col gap-1">
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">AI Feedback</p>
-            <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">{result.feedback}</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+              AI Feedback
+            </p>
+            <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">
+              {result.feedback}
+            </p>
           </div>
         </div>
       )}
     </div>
-  )
+  );
 }
