@@ -17,10 +17,10 @@ export default function HomePage() {
 
       <footer className="border-t border-border py-8 px-6">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-[#7D93C0]">
             &copy; {new Date().getFullYear()} Phạm Tuấn Anh.
           </p>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-[#7D93C0]">
             AI Engineer / Backend Developer
           </p>
         </div>

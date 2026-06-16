@@ -53,7 +53,7 @@ export function HeroSection() {
             <div className="relative w-full h-full rounded-3xl bg-card border border-border shadow-lg flex flex-col items-center justify-center gap-4 p-8">
               <div className="w-36 h-36 md:w-40 md:h-40 rounded-2xl bg-accent flex items-center justify-center text-4xl font-bold text-foreground">
                 <img
-                  src="/avatar.jpg"
+                  src="/Avatar.jpg"
                   alt="Avatar"
                   className="w-full h-full object-cover rounded-2xl scale-110 hover:scale-125 transition-transform duration-500 ease-out"
                 />
