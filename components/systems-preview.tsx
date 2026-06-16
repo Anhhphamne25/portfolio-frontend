@@ -2,11 +2,11 @@ import Link from "next/link";
 
 const systems = [
   {
-    id: "code-grader",
-    title: "Code Grader",
+    id: "AI-Score",
+    title: "AI Code Scoring",
     description:
       "Submit code solutions and receive AI-generated feedback with scores and improvement tips.",
-    stack: ["Python", "OpenAI", "AST Analysis"],
+    stack: ["Python", "Qwen", "AST Analysis", "FastAPI"],
     badge: "Most Impressive",
     badgeColor: "bg-[#6e95d0] text-[#ffffff]",
     featured: true,
@@ -16,7 +16,7 @@ const systems = [
     title: "Document Q&A",
     description:
       "Upload a PDF and ask questions. RAG pipeline retrieves precise answers with source references.",
-    stack: ["RAG", "Qdrant", "LangChain"],
+    stack: ["RAG", "Embedding", "FastAPI"],
     badge: "Most Advanced",
     badgeColor: "bg-[#F5F7FA] text-[#081e5a]",
     featured: true,
@@ -26,7 +26,7 @@ const systems = [
     title: "AI Problem Generator",
     description:
       "Generate custom coding problems by difficulty, language, and topic in seconds.",
-    stack: ["GPT-4", "FastAPI", "React"],
+    stack: ["Qwen", "FastAPI", "React"],
     badge: null,
     badgeColor: "",
     featured: false,
