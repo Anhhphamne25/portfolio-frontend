@@ -14,7 +14,6 @@ const skills = [
   "Docker",
   "PostgreSQL",
   "OpenAI API",
-  "Hugging Face",
   "Vector Databases",
   "REST APIs",
   "Redis",
@@ -22,28 +21,22 @@ const skills = [
 
 const highlights = [
   {
-    year: "2024",
-    label: "Built RAG-powered Document Q&A system",
+    year: "2025",
+    label: "Frontend Developer for NEU Course 2.0",
     detail:
-      "Developed a RAG-based document question answering system for enterprise use.",
+      "Developed the frontend for NEU Course 2.0, a system used to manage, process, and store academic administration workflows. I built user interfaces, handled raw data processing, and integrated the frontend with backend services. The system has been deployed and put into real use.",
   },
   {
-    year: "2023",
-    label: "AI Code Grader with 95% accuracy feedback",
+    year: "2025",
+    label: "AI RAG System for Scientific Research Support",
     detail:
-      "Created an AI-powered code grader that provides 95% accurate feedback on student submissions.",
+      "Built an AI RAG system to support scientific research at NEU using the university's collection of academic papers. I worked on data preprocessing, text extraction, embedding generation, Qdrant-based vector storage, retrieval optimization, answer generation, and logging. The system has been applied at NEU.",
   },
   {
-    year: "2022",
-    label: "Music Genre Classifier — 87% test accuracy",
+    year: "2025",
+    label: "Backend Developer for NEU Online Judge Enhancement",
     detail:
-      "Built a music genre classifier with 87% accuracy on a diverse dataset.",
-  },
-  {
-    year: "2021",
-    label: "B.Sc. Computer Science — AI specialization",
-    detail:
-      "Completed a Bachelor's degree in Computer Science with a focus on Artificial Intelligence.",
+      "Developed backend features to improve NEU OJ, an online coding practice and assessment system. Key features include AI-powered programming problem generation and editing using a multi-agent loop, as well as AI-based code grading by analyzing submitted code, sample solutions, and problem statements as graph nodes. The system is currently being tested and is planned for official use.",
   },
 ];
 
@@ -62,20 +55,25 @@ export function AboutSection() {
                 About
               </p>
               <h2 className="text-3xl font-bold text-[#081e5a] mb-4">
-                Building AI that actually works
+                Hi, I&apos;m Phạm Tuấn Anh — an AI Engineer and Backend
+                Developer
               </h2>
             </div>
             <p className="text-[#7D93C0] leading-relaxed">
-              I&apos;m a software engineer with a deep focus on AI systems and
-              backend architecture. I design and ship production-grade AI
-              applications — not demos. My work spans retrieval-augmented
-              generation, code intelligence, and machine learning pipelines.
+              I&apos;m able to build web applications on both the Frontend and
+              Backend, from designing user interfaces and handling APIs to
+              managing databases. I have worked with technologies such as
+              React/Next.js, Express.js, NestJS, FastAPI, and Prisma. I also
+              understand important concepts such as authentication,
+              authorization, RBAC, CRUD APIs, and project deployment.
             </p>
             <p className="text-[#7D93C0] leading-relaxed">
-              I care about systems that are reliable, fast, and genuinely
-              useful. Every project I build is grounded in real engineering
-              principles — clean APIs, thoughtful architecture, and measurable
-              outcomes.
+              Besides programming skills, I am a fast learner with the ability
+              to analyze problems and turn requirements into specific system
+              features. I also have experience preparing teaching materials,
+              explaining technical knowledge in an easy-to-understand way, and I
+              am currently orienting my career toward Backend and AI Backend
+              Engineering.
             </p>
 
             {/* Skills */}

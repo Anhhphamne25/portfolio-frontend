@@ -57,19 +57,19 @@ export function AiChatSection() {
     <section id="chat" className="py-24 px-6 bg-secondary/30">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
-          <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">
+          <p className="text-xs font-semibold text-[#7D93C0] uppercase tracking-widest mb-3">
             AI Assistant
           </p>
-          <h2 className="text-3xl font-bold text-foreground mb-3">
+          <h2 className="text-3xl font-bold text-[#081e5a] mb-3">
             Chat with my AI
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-sm text-[#7D93C0] leading-relaxed">
             Ask me anything about my background, projects, or skills — I&apos;ll
             answer in Alex&apos;s voice.
           </p>
         </div>
 
-        <div className="rounded-3xl bg-card border border-border shadow-sm overflow-hidden">
+        <div className="rounded-3xl bg-[#f8fafc] border border-border shadow-sm overflow-hidden">
           {/* Chat window */}
           <div
             ref={chatWindowRef}
@@ -78,11 +78,11 @@ export function AiChatSection() {
             {/* Welcome message */}
             {messages.length === 0 && (
               <div className="flex gap-3 items-start">
-                <div className="w-8 h-8 rounded-xl bg-accent flex items-center justify-center text-xs font-bold text-foreground shrink-0">
+                <div className="w-8 h-8 rounded-xl bg-accent flex items-center justify-center text-xs font-bold text-[#081e5a] shrink-0">
                   AC
                 </div>
-                <div className="bg-secondary rounded-2xl rounded-tl-sm px-4 py-3 max-w-xs md:max-w-md">
-                  <p className="text-sm text-foreground">
+                <div className="bg-[#e2e8f0] rounded-2xl rounded-tl-sm px-4 py-3 max-w-xs md:max-w-md">
+                  <p className="text-sm text-[#081e5a]">
                     Hey! I&apos;m Alex&apos;s AI assistant. Ask me about his
                     projects, skills, or experience — I&apos;m happy to help!
                   </p>
@@ -103,8 +103,8 @@ export function AiChatSection() {
                   <div
                     className={`w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold shrink-0 ${
                       isUser
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-accent text-foreground"
+                        ? "bg-[#081e5a] text-[#ffffff] rounded-tr-sm"
+                        : "bg-[#e2e8f0] text-[#081e5a] rounded-tl-sm"
                     }`}
                   >
                     {isUser ? "You" : "AC"}
@@ -112,8 +112,8 @@ export function AiChatSection() {
                   <div
                     className={`px-4 py-3 rounded-2xl max-w-xs md:max-w-md text-sm leading-relaxed ${
                       isUser
-                        ? "bg-primary text-primary-foreground rounded-tr-sm"
-                        : "bg-secondary text-foreground rounded-tl-sm"
+                        ? "bg-[#081e5a] text-[#ffffff] rounded-tr-sm"
+                        : "bg-[#e2e8f0] text-[#081e5a] rounded-tl-sm"
                     }`}
                   >
                     {text}
@@ -124,10 +124,10 @@ export function AiChatSection() {
 
             {isLoading && (
               <div className="flex gap-3 items-start">
-                <div className="w-8 h-8 rounded-xl bg-accent flex items-center justify-center text-xs font-bold text-foreground shrink-0">
+                <div className="w-8 h-8 rounded-xl bg-accent flex items-center justify-center text-xs font-bold text-[#081e5a] shrink-0">
                   AC
                 </div>
-                <div className="bg-secondary rounded-2xl rounded-tl-sm px-4 py-3">
+                <div className="bg-[#e2e8f0] rounded-2xl rounded-tl-sm px-4 py-3">
                   <div className="flex gap-1 items-center h-4">
                     <span className="w-1.5 h-1.5 bg-muted-foreground rounded-full animate-bounce [animation-delay:0ms]" />
                     <span className="w-1.5 h-1.5 bg-muted-foreground rounded-full animate-bounce [animation-delay:150ms]" />
@@ -162,12 +162,12 @@ export function AiChatSection() {
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
               placeholder="Ask me anything..."
               disabled={isLoading}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-secondary border border-border text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all disabled:opacity-50"
+              className="flex-1 px-4 py-2.5 rounded-xl bg-[#f8fafc] border border-border text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all disabled:opacity-50"
             />
             <button
               onClick={handleSend}
               disabled={!inputValue.trim() || isLoading}
-              className="px-4 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-all hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100"
+              className="px-4 py-2.5 rounded-xl bg-[#081e5a] text-[#ffffff] text-sm font-medium hover:opacity-90 transition-all hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100"
             >
               Send
             </button>
