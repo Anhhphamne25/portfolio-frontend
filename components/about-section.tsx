@@ -40,9 +40,40 @@ const highlights = [
   },
 ];
 
+const achievements = [
+  {
+    year: "2023",
+    label: "University-level “Student of Five Merits” Award",
+    detail:
+      "Recognized as a university-level “Student of Five Merits” for meeting five key criteria: good ethics, strong academic performance, physical fitness, volunteer spirit, and international integration.",
+  },
+  {
+    year: "2025",
+    label: "Olympic Informatics Award — Specialized Division",
+    detail:
+      "Received an award in the Specialized Division of the University-level Olympic Informatics Competition, demonstrating strong problem-solving and programming skills.",
+  },
+  {
+    year: "2026",
+    label: "1st Prize in University-level Scientific Research",
+    detail:
+      "Won 1st Prize with the highest score university-wide for the research project “Building a Data Lake Model for RAG Systems with Knowledge Gap Detection in Searching and Analyzing Academic Papers at National Economics University.” The project was selected to compete at the Ministry of Education and Training level.",
+  },
+  {
+    year: "2026",
+    label: "3rd Prize in University-level Scientific Research",
+    detail:
+      "Won 3rd Prize for the research project “Researching and Developing an Intelligent Online Programming Learning and Examination System Based on Automatic Code Grading.”",
+  },
+];
+
 export function AboutSection() {
   const [pinnedIndex, setPinnedIndex] = useState<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [awardPinnedIndex, setAwardPinnedIndex] = useState<number | null>(null);
+  const [awardHoveredIndex, setAwardHoveredIndex] = useState<number | null>(
+    null,
+  );
 
   return (
     <section id="about" className="py-24 px-6 bg-[#ffffff]">
@@ -90,16 +121,83 @@ export function AboutSection() {
           </div>
 
           {/* Experience */}
-          <div className="flex flex-col gap-4">
-            <p className="text-xs font-bold text-[#6e95d0] uppercase tracking-widest mb-1">
-              Experience
-            </p>
-            <div className="flex flex-col gap-3">
-              {highlights.map((item, i) =>
-                (() => {
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-4">
+              <p className="text-xs font-bold text-[#6e95d0] uppercase tracking-widest mb-1">
+                Experience
+              </p>
+              <div className="flex flex-col gap-3">
+                {highlights.map((item, i) =>
+                  (() => {
+                    const isOpen =
+                      pinnedIndex === i ||
+                      (pinnedIndex === null && hoveredIndex === i);
+
+                    return (
+                      <div
+                        key={i}
+                        className={`rounded-2xl bg-[#F5F7FA] border border-border px-4 py-4 hover:border-accent hover:shadow-sm transition-all duration-300 ease-out ${
+                          isOpen ? "border-accent shadow-sm" : ""
+                        }`}
+                        onMouseEnter={() => setHoveredIndex(i)}
+                        onMouseLeave={() => setHoveredIndex(null)}
+                        onClick={() =>
+                          setPinnedIndex((prev) => (prev === i ? null : i))
+                        }
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault();
+                            setPinnedIndex((prev) => (prev === i ? null : i));
+                          }
+                        }}
+                        role="button"
+                        tabIndex={0}
+                        aria-expanded={isOpen}
+                      >
+                        <div className="flex gap-4 items-start">
+                          <span className="text-xs font-bold text-[#ffffff] bg-[#6e95d0] px-2 py-1 rounded-lg shrink-0 mt-0.5">
+                            {item.year}
+                          </span>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm text-[#081e5a] font-medium leading-relaxed">
+                              {item.label}
+                            </p>
+
+                            <div
+                              className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                                isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                              }`}
+                            >
+                              <div className="overflow-hidden">
+                                <p
+                                  className={`pt-2 text-sm text-[#7D93C0] leading-relaxed transition-all duration-300 ease-out ${
+                                    isOpen
+                                      ? "opacity-100 translate-y-0"
+                                      : "opacity-0 translate-y-2"
+                                  }`}
+                                >
+                                  {item.detail}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })(),
+                )}
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <p className="text-xs font-bold text-[#6e95d0] uppercase tracking-widest mb-1">
+                Awards
+              </p>
+              <div className="flex flex-col gap-3">
+                {achievements.map((item, i) => {
                   const isOpen =
-                    pinnedIndex === i ||
-                    (pinnedIndex === null && hoveredIndex === i);
+                    awardPinnedIndex === i ||
+                    (awardPinnedIndex === null && awardHoveredIndex === i);
 
                   return (
                     <div
@@ -107,15 +205,17 @@ export function AboutSection() {
                       className={`rounded-2xl bg-[#F5F7FA] border border-border px-4 py-4 hover:border-accent hover:shadow-sm transition-all duration-300 ease-out ${
                         isOpen ? "border-accent shadow-sm" : ""
                       }`}
-                      onMouseEnter={() => setHoveredIndex(i)}
-                      onMouseLeave={() => setHoveredIndex(null)}
+                      onMouseEnter={() => setAwardHoveredIndex(i)}
+                      onMouseLeave={() => setAwardHoveredIndex(null)}
                       onClick={() =>
-                        setPinnedIndex((prev) => (prev === i ? null : i))
+                        setAwardPinnedIndex((prev) => (prev === i ? null : i))
                       }
                       onKeyDown={(event) => {
                         if (event.key === "Enter" || event.key === " ") {
                           event.preventDefault();
-                          setPinnedIndex((prev) => (prev === i ? null : i));
+                          setAwardPinnedIndex((prev) =>
+                            prev === i ? null : i,
+                          );
                         }
                       }}
                       role="button"
@@ -152,8 +252,8 @@ export function AboutSection() {
                       </div>
                     </div>
                   );
-                })(),
-              )}
+                })}
+              </div>
             </div>
           </div>
         </div>
