@@ -48,13 +48,13 @@ export function ContactSection() {
         <div className="rounded-3xl bg-[#F5F7FA] border border-border p-10 md:p-16 flex flex-col md:flex-row gap-12 items-center">
           {/* Left */}
           <div className="flex-1 flex flex-col gap-4">
-            <p className="text-xs font-semibold text-primary uppercase tracking-widest">
+            <p className="text-xs font-semibold text-[#6e95d0] uppercase tracking-widest">
               Contact
             </p>
-            <h2 className="text-3xl font-bold text-foreground text-balance">
+            <h2 className="text-3xl font-bold text-[#081e5a] text-balance">
               Let&apos;s build something together
             </h2>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-[#7D93C0] leading-relaxed">
               I&apos;m open to new opportunities, collaborations, and
               interesting projects. Feel free to reach out through any of the
               channels below.
@@ -69,19 +69,19 @@ export function ContactSection() {
                 href={link.href}
                 target={link.label !== "Email" ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-2xl bg-[#fff] border border-border hover:border-accent hover:bg-accent/20 transition-all group"
+                className="flex items-center gap-4 p-4 rounded-2xl bg-[#fff] border border-border hover:border-accent hover:bg-[#6e95d0]/2 transition-all group"
               >
-                <div className="w-10 h-10 rounded-xl bg-card flex items-center justify-center text-muted-foreground group-hover:text-primary transition-colors border border-border">
+                <div className="w-10 h-10 rounded-xl bg-card flex items-center justify-center text-[#6e95d0] group-hover:text-[#6e95d0] transition-colors border border-border">
                   {link.icon}
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground">{link.label}</p>
-                  <p className="text-sm font-medium text-foreground">
+                  <p className="text-xs text-[#6e95d0]">{link.label}</p>
+                  <p className="text-sm font-medium text-[#081e5a]">
                     {link.value}
                   </p>
                 </div>
                 <svg
-                  className="w-4 h-4 text-muted-foreground ml-auto group-hover:text-primary transition-colors"
+                  className="w-4 h-4 text-[#6e95d0] ml-auto group-hover:text-[#6e95d0]/20 transition-colors"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
