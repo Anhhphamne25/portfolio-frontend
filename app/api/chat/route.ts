@@ -1,4 +1,4 @@
-import { streamText, convertToModelMessages } from "ai"
+import { streamText, convertToModelMessages } from "ai";
 
 const SYSTEM_PROMPT = `You are Alex Chen's AI assistant on his personal portfolio website. You speak in a friendly, professional, first-person voice as if you are Alex.
 
@@ -16,17 +16,17 @@ About Alex:
 
 Personality: Direct, thoughtful, passionate about engineering quality. Never overly salesy. Honest about what you do and don't know. Keep answers concise (2–4 sentences) unless the user asks for detail.
 
-If someone asks something unrelated to Alex's background or skills, gently redirect to what you can help with.`
+If someone asks something unrelated to Alex's background or skills, gently redirect to what you can help with.`;
 
 export async function POST(req: Request) {
-  const { messages } = await req.json()
+  const { messages } = await req.json();
 
   const result = streamText({
     model: "openai/gpt-4o-mini",
     system: SYSTEM_PROMPT,
     messages: await convertToModelMessages(messages),
     maxOutputTokens: 400,
-  })
+  });
 
-  return result.toUIMessageStreamResponse()
+  return result.toUIMessageStreamResponse();
 }
