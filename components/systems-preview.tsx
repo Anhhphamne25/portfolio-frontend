@@ -4,6 +4,7 @@ const systems = [
   {
     id: "AI-Score",
     title: "AI Code Scoring",
+    link: "/lab",
     description:
       "Submit code solutions and receive AI-generated feedback with scores and improvement tips.",
     stack: ["Python", "Gemini", "AST Analysis", "FastAPI", "langchain"],
@@ -12,10 +13,11 @@ const systems = [
     featured: true,
   },
   {
-    id: "doc-qa",
-    title: "Document Q&A",
+    id: "PamBot",
+    title: "PamBot",
+    link: "/pambot",
     description:
-      "Upload a PDF and ask questions. RAG pipeline retrieves precise answers with source references.",
+      "An intelligent chat assistant powered by RAG and advanced language models.",
     stack: ["RAG", "Embedding", "FastAPI", "Qwen", "Qdrant"],
     badge: "Most Advanced",
     badgeColor: "bg-[#F5F7FA] text-[#081e5a]",
@@ -24,6 +26,7 @@ const systems = [
   {
     id: "problem-gen",
     title: "AI Problem Generator",
+    link: "/lab",
     description:
       "Generate custom coding problems by difficulty, language, and topic in seconds.",
     stack: ["FastAPI", "MultiAgent", "Gemini"],
@@ -98,7 +101,7 @@ export function SystemsPreview() {
               </div>
 
               <Link
-                href="/lab"
+                href={system.link}
                 className="mt-auto inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#6e95d0] border border-border text-sm font-medium text-[#ffffff] hover:bg-[#6e95d0]/80 transition-colors w-fit group-hover:border-accent"
               >
                 Try it

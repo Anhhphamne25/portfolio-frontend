@@ -58,14 +58,14 @@ export function AiChatSection() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
           <p className="text-xs font-semibold text-[#7D93C0] uppercase tracking-widest mb-3">
-            AI Assistant
+            PamBot
           </p>
           <h2 className="text-3xl font-bold text-[#081e5a] mb-3">
             Chat with my AI
           </h2>
           <p className="text-sm text-[#7D93C0] leading-relaxed">
             Ask me anything about my background, projects, or skills — I&apos;ll
-            answer in Alex&apos;s voice.
+            answer in Pam&apos;s voice.
           </p>
         </div>
 
@@ -83,8 +83,9 @@ export function AiChatSection() {
                 </div>
                 <div className="bg-[#e2e8f0] rounded-2xl rounded-tl-sm px-4 py-3 max-w-xs md:max-w-md">
                   <p className="text-sm text-[#081e5a]">
-                    Hey! I&apos;m Alex&apos;s AI assistant. Ask me about his
-                    projects, skills, or experience — I&apos;m happy to help!
+                    Hey! I&apos;m PamBot AhhPam&apos;s Assistant. Ask me about
+                    his projects, skills, or experience — I&apos;m happy to
+                    help!
                   </p>
                 </div>
               </div>
