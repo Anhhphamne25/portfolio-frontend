@@ -83,8 +83,9 @@ export function AiChatSection() {
                 </div>
                 <div className="bg-[#e2e8f0] rounded-2xl rounded-tl-sm px-4 py-3 max-w-xs md:max-w-md">
                   <p className="text-sm text-[#081e5a]">
-                    Hey! I&apos;m Alex&apos;s AI assistant. Ask me about his
-                    projects, skills, or experience — I&apos;m happy to help!
+                    Hey! I&apos;m PamBot AhhPam&apos;s Assistant. Ask me about
+                    his projects, skills, or experience — I&apos;m happy to
+                    help!
                   </p>
                 </div>
               </div>
