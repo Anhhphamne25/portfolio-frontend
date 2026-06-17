@@ -68,7 +68,7 @@ export function ProblemGenerator() {
                 onClick={() => setDifficulty(d)}
                 className={`flex-1 py-2 rounded-xl text-sm font-medium border transition-all ${
                   difficulty === d
-                    ? "bg-[#6e95d0] text-[#081e5a] border-primary"
+                    ? "bg-[#6e95d0] text-[#fff] border-primary"
                     : "bg-[#6e95d0]/10 border-border text-[#7D93C0] hover:border-primary/40"
                 }`}
               >
