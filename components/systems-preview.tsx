@@ -6,7 +6,7 @@ const systems = [
     title: "AI Code Scoring",
     description:
       "Submit code solutions and receive AI-generated feedback with scores and improvement tips.",
-    stack: ["Python", "Qwen", "AST Analysis", "FastAPI"],
+    stack: ["Python", "Gemini", "AST Analysis", "FastAPI", "langchain"],
     badge: "Most Impressive",
     badgeColor: "bg-[#6e95d0] text-[#ffffff]",
     featured: true,
@@ -16,7 +16,7 @@ const systems = [
     title: "Document Q&A",
     description:
       "Upload a PDF and ask questions. RAG pipeline retrieves precise answers with source references.",
-    stack: ["RAG", "Embedding", "FastAPI"],
+    stack: ["RAG", "Embedding", "FastAPI", "Qwen", "Qdrant"],
     badge: "Most Advanced",
     badgeColor: "bg-[#F5F7FA] text-[#081e5a]",
     featured: true,
@@ -26,7 +26,7 @@ const systems = [
     title: "AI Problem Generator",
     description:
       "Generate custom coding problems by difficulty, language, and topic in seconds.",
-    stack: ["Qwen", "FastAPI", "React"],
+    stack: ["FastAPI", "MultiAgent", "Gemini"],
     badge: null,
     badgeColor: "",
     featured: false,
