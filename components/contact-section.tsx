@@ -1,8 +1,8 @@
 const contactLinks = [
   {
     label: "Email",
-    value: "AhhPam.Work@gmail.com",
-    href: "mailto:AhhPam.Work@gmail.com",
+    value: "ahhpam.work@gmail.com",
+    href: "mailto:ahhpam.work@gmail.com",
     icon: (
       <svg
         className="w-5 h-5"

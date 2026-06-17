@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Navbar } from "@/components/navbar";
 import { CodeGrader } from "@/components/lab/scoring-code";
-import { DocumentQA } from "@/components/lab/document-qa";
 import { ProblemGenerator } from "@/components/lab/problem-generator";
 
 const SYSTEMS = [
@@ -27,29 +26,6 @@ const SYSTEMS = [
           strokeLinecap="round"
           strokeLinejoin="round"
           d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
-        />
-      </svg>
-    ),
-  },
-  {
-    id: "doc-qa",
-    title: "Document Q&A",
-    description: "Upload a PDF and ask questions — powered by a RAG pipeline",
-    stack: ["RAG", "Embedding", "FastAPI", "Qwen", "Qdrant"],
-    badge: "Most Advanced",
-    badgeColor: "bg-[#F5F7FA] text-[#081e5a]",
-    icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={1.5}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
         />
       </svg>
     ),
@@ -84,8 +60,6 @@ function SystemContent({ id }: { id: string }) {
   switch (id) {
     case "AI-Score":
       return <CodeGrader />;
-    case "doc-qa":
-      return <DocumentQA />;
     case "problem-gen":
       return <ProblemGenerator />;
     default:
