@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { score } from "../../services/api-labs";
+
 const SAMPLE_PROBLEM = {
   title: "Two Sum",
   difficulty: "Easy",
@@ -23,6 +25,16 @@ const STARTER_CODE = `def two_sum(nums: list[int], target: int) -> list[int]:
     pass
 `;
 
+const SOLUTION = `def two_sum(nums: list[int], target: int) -> list[int]:
+    num_dict = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in num_dict:
+            return [num_dict[complement], i]
+        num_dict[num] = i
+    return []
+`;
+
 type GraderResult = {
   score: number;
   verdict: string;
@@ -40,11 +52,7 @@ export function CodeGrader() {
     setLoading(true);
     setResult(null);
     try {
-      const res = await fetch("/api/grade", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code, problem: SAMPLE_PROBLEM.title }),
-      });
+      const res = await score(SAMPLE_PROBLEM.title, code, SOLUTION);
       const data = await res.json();
       setResult(data);
     } catch {

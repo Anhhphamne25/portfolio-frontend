@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { generateProblem } from "../../services/api-labs";
 
 type ProblemOutput = {
   title: string;
   description: string;
   examples: { input: string; output: string }[];
-  constraints: string[];
+  constraints: string;
 };
 
-const DIFFICULTIES = ["Easy", "Medium", "Hard"];
+const DIFFICULTIES = ["easy", "medium", "hard"];
 const LANGUAGES = ["Python", "JavaScript", "C++", "Java"];
 const TOPICS = [
   "Array",
@@ -23,9 +24,9 @@ const TOPICS = [
 ];
 
 export function ProblemGenerator() {
-  const [difficulty, setDifficulty] = useState("Medium");
-  const [language, setLanguage] = useState("Python");
-  const [topic, setTopic] = useState("Array");
+  const [difficulty, setDifficulty] = useState("medium");
+  const [language, setLanguage] = useState("python");
+  const [topic, setTopic] = useState("array");
   const [result, setResult] = useState<ProblemOutput | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -33,11 +34,7 @@ export function ProblemGenerator() {
     setLoading(true);
     setResult(null);
     try {
-      const res = await fetch("/api/generate-problem", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ difficulty, language, topic }),
-      });
+      const res = await generateProblem(topic, difficulty, language);
       const data = await res.json();
       setResult(data);
     } catch {
@@ -45,7 +42,7 @@ export function ProblemGenerator() {
         title: "Error",
         description: "Failed to generate problem. Please try again.",
         examples: [],
-        constraints: [],
+        constraints: " ",
       });
     } finally {
       setLoading(false);
@@ -194,7 +191,7 @@ export function ProblemGenerator() {
               <p className="text-xs font-semibold text-[#7D93C0] uppercase tracking-wide">
                 Constraints
               </p>
-              {result.constraints.map((c, i) => (
+              {result.constraints.split("\n").map((c, i) => (
                 <p key={i} className="text-xs text-[#3E5A9A] font-mono">
                   • {c}
                 </p>
