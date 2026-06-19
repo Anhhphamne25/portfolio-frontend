@@ -197,7 +197,7 @@ export function CodeGrader() {
             </div>
           </div>
 
-          {/* Test results */}
+          {/* Test results
           {result.testResults.length > 0 && (
             <div className="flex flex-col gap-2">
               <p className="text-xs font-semibold text-[#7D93C0] uppercase tracking-wide">
@@ -218,7 +218,7 @@ export function CodeGrader() {
                 </div>
               ))}
             </div>
-          )}
+          )} */}
 
           {/* Feedback */}
           <div className="flex flex-col gap-1">
