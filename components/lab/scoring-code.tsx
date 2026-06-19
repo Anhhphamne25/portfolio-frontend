@@ -35,11 +35,19 @@ const SOLUTION = `def two_sum(nums: list[int], target: int) -> list[int]:
     return []
 `;
 
+type PreliminaryScore = {
+  syntax_valid: boolean;
+  similarity_score: number;
+  matched_nodes: string[];
+  missing_nodes: string[];
+  extra_nodes: string[];
+  comment: string;
+};
+
 type GraderResult = {
   score: number;
-  verdict: string;
   feedback: string;
-  testResults: { input: string; expected: string; passed: boolean }[];
+  preliminary_score: PreliminaryScore;
 };
 
 export function CodeGrader() {
@@ -52,15 +60,21 @@ export function CodeGrader() {
     setLoading(true);
     setResult(null);
     try {
-      const res = await score(SAMPLE_PROBLEM.title, code, SOLUTION);
-      const data = await res.json();
+      const data = await score(SAMPLE_PROBLEM.title, code, SOLUTION);
+      console.log("Grader response:", data);
       setResult(data);
     } catch {
       setResult({
         score: 0,
-        verdict: "Error",
         feedback: "Failed to connect to grader. Please try again.",
-        testResults: [],
+        preliminary_score: {
+          syntax_valid: false,
+          similarity_score: 0,
+          matched_nodes: [],
+          missing_nodes: [],
+          extra_nodes: [],
+          comment: "Failed to connect to grader.",
+        },
       });
     } finally {
       setLoading(false);
@@ -192,33 +206,9 @@ export function CodeGrader() {
               {result.score}/100
             </div>
             <div>
-              <p className="font-semibold text-[#081e5a]">{result.verdict}</p>
               <p className="text-xs text-[#7D93C0]">AI-graded feedback</p>
             </div>
           </div>
-
-          {/* Test results */}
-          {result.testResults.length > 0 && (
-            <div className="flex flex-col gap-2">
-              <p className="text-xs font-semibold text-[#7D93C0] uppercase tracking-wide">
-                Test Cases
-              </p>
-              {result.testResults.map((t, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-3 text-xs p-2.5 rounded-xl bg-secondary"
-                >
-                  <span className={t.passed ? "text-primary" : "text-red-500"}>
-                    {t.passed ? "PASS" : "FAIL"}
-                  </span>
-                  <span className="text-[#7D93C0] font-mono">{t.input}</span>
-                  <span className="text-[#7D93C0] ml-auto">
-                    Expected: {t.expected}
-                  </span>
-                </div>
-              ))}
-            </div>
-          )}
 
           {/* Feedback */}
           <div className="flex flex-col gap-1">

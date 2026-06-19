@@ -34,8 +34,7 @@ export function ProblemGenerator() {
     setLoading(true);
     setResult(null);
     try {
-      const res = await generateProblem(topic, difficulty, language);
-      const data = await res.json();
+      const data = await generateProblem(topic, difficulty, language);
       setResult(data);
     } catch {
       setResult({
@@ -191,11 +190,9 @@ export function ProblemGenerator() {
               <p className="text-xs font-semibold text-[#7D93C0] uppercase tracking-wide">
                 Constraints
               </p>
-              {result.constraints.split("\n").map((c, i) => (
-                <p key={i} className="text-xs text-[#3E5A9A] font-mono">
-                  • {c}
-                </p>
-              ))}
+              <p className="text-xs text-[#3E5A9A] font-mono">
+                {result.constraints}
+              </p>
             </div>
           )}
         </div>
